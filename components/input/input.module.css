@@ -7,6 +7,12 @@
     w-full
 }
 
+.label {
+    @apply
+    shadow-sm
+    drop-shadow-sm
+}
+
 .inputEl {
     @apply
     px-2 py-2
@@ -15,9 +21,12 @@
     rounded
     w-full
     outline-none
+    shadow-sm
+    shadow-gray-200
 }
 
 .inputElValidation {
     @apply
     hidden
+    drop-shadow-sm
 }

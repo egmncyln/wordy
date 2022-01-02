@@ -1,19 +1,51 @@
 .button {
     @apply
+    flex
+    justify-center
+    items-center
     text-white
     px-4 py-2
     rounded
     w-full
+    font-medium
+    shadow-sm
+    hover:transition-colors
 }
 
 .button[primary] {
     @apply
+    drop-shadow-sm
     bg-blue-600
+    shadow-blue-200
     hover:bg-blue-700
 }
 
 .button[secondary] {
     @apply
+    drop-shadow-sm
     bg-red-600
+    shadow-red-200
     hover:bg-red-700
+}
+
+.button[disabled] {
+    @apply
+    opacity-50
+    pointer-events-none
+}
+
+.svg {
+    @apply
+    hidden
+    animate-none
+    w-6 h-6
+    text-white
+    drop-shadow-sm
+    mr-2
+}
+
+.svg[spinner] {
+    @apply
+    flex
+    animate-spin
 }
