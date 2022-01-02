@@ -8,6 +8,8 @@ const Home: NextPage = () => {
       <Head>
         <title>Wordy App</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src='scripts/global-variables.js'></script>
+        {/* <script src='scripts/attach-voice.js'></script> */}
       </Head>
 
       <div className='flex justify-center'>
