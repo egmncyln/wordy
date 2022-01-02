@@ -1,0 +1,20 @@
+.index{
+    @apply
+    flex
+    flex-col
+    justify-center
+    items-center
+    w-full
+    max-w-xs
+    tbl:max-w-sm
+}
+
+.form {
+    @apply
+    flex
+    flex-col
+    justify-center
+    items-center
+    w-full
+}
+
