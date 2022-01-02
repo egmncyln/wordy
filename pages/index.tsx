@@ -9,6 +9,10 @@ const Home: NextPage = () => {
         <title>Wordy App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <div className='flex justify-center'>
+        <h1>Hello, this is wordy app !</h1>
+      </div>
     </>
   )
 }
