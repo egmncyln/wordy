@@ -18,8 +18,3 @@
     shadow-sm
     shadow-gray-200
 }
-
-.inputElValidation {
-    @apply
-    hidden
-}

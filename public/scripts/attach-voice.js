@@ -5,7 +5,7 @@
         let getApiKeyObjs = async () => {
             return await new Promise((resolve, reject) => {
                 let xhr = new XMLHttpRequest();
-                xhr.open(`GET`, `${window.BASE_URI}/apiKeys.json`, false);
+                xhr.open(`GET`, `https://wordy-a7813-default-rtdb.firebaseio.com/apiKeys.json`, false);
                 xhr.onload = result => result && result.target && result.target.response ? resolve(JSON.parse(result.target.response)) : resolve(null);
                 xhr.onerror = error => reject(error);
                 xhr.send();

@@ -5,7 +5,11 @@ import cn from 'classnames'
 
 function Input({ className, id, label, ...props }: any) {
     // 'invalid:placeholder:text-red-400',
-    const lowerLabel = (label as string).toLowerCase();
+    let lowerLabel = 'input';
+    if (label) {
+        lowerLabel = (label as string).toLowerCase();
+    }
+
     return (
         <div className={cn(styles.input, className)}>
             <label htmlFor={id}>{label}</label>
@@ -16,7 +20,7 @@ function Input({ className, id, label, ...props }: any) {
                 onPaste={(e: any) => props.onChange(e.target.value)}
                 onChange={(e: any) => props.onChange(e.target.value)}
                 onFocus={(e: any) => props.onChange(e.target.value)} />
-            <small className={cn(styles.inputElValidation, 'peer-invalid:flex text-red-400')}>{`Please enter valid ${lowerLabel}`}</small>
+            <small className={cn('hidden', 'peer-invalid:flex text-red-400')}>{`Please enter valid ${lowerLabel}`}</small>
         </div>
     )
 }

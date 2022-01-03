@@ -15,7 +15,6 @@
 
 .button[primary] {
     @apply
-    
     bg-blue-600
     shadow-blue-200
     hover:bg-blue-700

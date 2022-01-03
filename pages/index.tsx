@@ -6,13 +6,10 @@ import Button from '../components/button/button'
 import Form from '../components/form/form'
 import Input from '../components/input/input'
 import styles from './index.module.css'
-import { getAuth, signInWithEmailAndPassword, User } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
 
 const Home: NextPage = () => {
-  let _email: string = '';
-  let _password: string = '';
-
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -64,30 +61,31 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Wordy App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script src='scripts/global-variables.js'></script>
+        <link rel='icon' href='/favicon.ico' />
         {/* <script src='scripts/attach-voice.js'></script> */}
       </Head>
 
       <div className={styles.index}>
-        <label className="mb-1">Welcome to Wordy</label>
-        <small className="mb-6">You have to login to use it</small>
+        <label className='mb-1'>Welcome to Wordy</label>
+        <small className='mb-6'>You have to login to use it</small>
         <Form onSubmit={onFormSubmit}>
           <Input
-            className="mb-1" id="email" type="email"
-            label="E-mail" required={inputRequired}
+            className='mb-1' id='email' type='email'
+            label='E-mail' required={inputRequired}
             onChange={onEmailChange}
             autoFocus={true} />
           <Input
-            className="mb-3" id="password" type="password"
-            label="Password" required={inputRequired}
+            className='mb-3' id='password' type='password'
+            label='Password' required={inputRequired}
             onChange={onPasswordChange} />
           <Button
-            primary="true" type="submit"
+            primary='true' type='submit'
             disabled={showSpinner} spinner={showSpinner}
             onClick={onLoginClicked}>Login</Button>
         </Form>
-        {errorMessage && errorMessage.length > 0 ? <small className={styles.errorMessage}>{errorMessage}</small> : null}
+        {errorMessage && errorMessage.length > 0
+          ? <small className='mt-2 text-red-400'>{errorMessage}</small>
+          : null}
       </div>
     </>
   )

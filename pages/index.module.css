@@ -2,15 +2,7 @@
     @apply
     flex
     flex-col
-    justify-center
     items-center
     w-full
     max-w-xs
-    tbl:max-w-sm
-}
-
-.errorMessage {
-    @apply
-    mt-2
-    text-red-400
 }

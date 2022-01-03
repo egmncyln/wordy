@@ -2,7 +2,7 @@ import '../styles/main.css'
 import type { AppProps } from 'next/app'
 import { initializeApp } from 'firebase/app';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyA70nif9XJQ_N9oQaCbFDHMd_H9L7PUHF0",
   authDomain: "wordy-a7813.firebaseapp.com",
   databaseURL: "https://wordy-a7813-default-rtdb.firebaseio.com",
