@@ -14,14 +14,18 @@ const Home: NextPage = () => {
   let _password: string = '';
 
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [inputRequired, setInputRequired] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onFormSubmit = async (e: any) => {
     e.preventDefault();
     setShowSpinner(true);
+    setErrorMessage('');
     const auth = getAuth();
-    await signInWithEmailAndPassword(auth, _email, _password)
+    await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const { uid } = userCredential.user;
         router.push({
@@ -29,8 +33,8 @@ const Home: NextPage = () => {
           query: { userId: uid }
         });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((error: Error) => {
+        setErrorMessage(error.message);
         setInputRequired(false);
         e.target.reset();
       })
@@ -40,14 +44,19 @@ const Home: NextPage = () => {
   const setInputRequiredToTrue = () => inputRequired ? null : setInputRequired(true);
 
   const onEmailChange = (email: string) => {
-    console.log(email);
-    _email = email;
+    setEmail(email);
+    setErrorMessage('');
     setInputRequiredToTrue();
   }
 
   const onPasswordChange = (password: string) => {
-    console.log(password);
-    _password = password;
+    setPassword(password);
+    setErrorMessage('');
+    setInputRequiredToTrue();
+  }
+
+  const onLoginClicked = () => {
+    setErrorMessage('');
     setInputRequiredToTrue();
   }
 
@@ -61,23 +70,24 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.index}>
-        <h1 className="mb-1 drop-shadow-sm">Welcome to Wordy</h1>
-        <small className="mb-6 drop-shadow-sm">You have to login to use it</small>
+        <label className="mb-1">Welcome to Wordy</label>
+        <small className="mb-6">You have to login to use it</small>
         <Form onSubmit={onFormSubmit}>
           <Input
             className="mb-1" id="email" type="email"
             label="E-mail" required={inputRequired}
-            onChange={onEmailChange} onPaste={onEmailChange}
+            onChange={onEmailChange}
             autoFocus={true} />
           <Input
             className="mb-3" id="password" type="password"
             label="Password" required={inputRequired}
-            onChange={onPasswordChange} onPaste={onPasswordChange} />
+            onChange={onPasswordChange} />
           <Button
             primary="true" type="submit"
             disabled={showSpinner} spinner={showSpinner}
-            onClick={setInputRequiredToTrue}>Login</Button>
+            onClick={onLoginClicked}>Login</Button>
         </Form>
+        {errorMessage && errorMessage.length > 0 ? <small className={styles.errorMessage}>{errorMessage}</small> : null}
       </div>
     </>
   )

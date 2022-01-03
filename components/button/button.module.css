@@ -9,12 +9,13 @@
     w-full
     font-medium
     shadow-sm
+    drop-shadow-sm
     hover:transition-colors
 }
 
 .button[primary] {
     @apply
-    drop-shadow-sm
+    
     bg-blue-600
     shadow-blue-200
     hover:bg-blue-700
@@ -22,7 +23,6 @@
 
 .button[secondary] {
     @apply
-    drop-shadow-sm
     bg-red-600
     shadow-red-200
     hover:bg-red-700
@@ -40,7 +40,6 @@
     animate-none
     w-6 h-6
     text-white
-    drop-shadow-sm
     mr-2
 }
 

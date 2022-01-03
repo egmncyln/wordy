@@ -11,3 +11,8 @@
     h-screen
     font-medium
 }
+
+label, small {
+    @apply
+    drop-shadow-sm
+}
