@@ -27,7 +27,10 @@ const Home: NextPage = () => {
         const { uid } = userCredential.user;
         router.push({
           pathname: 'wordy',
-          query: { userId: uid }
+          query: {
+            userId: uid,
+            userName: email.replace('@wordy.com', '')
+          }
         });
       })
       .catch((error: Error) => {
@@ -66,26 +69,26 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.index}>
-        <label className='mb-1'>Welcome to Wordy</label>
-        <small className='mb-6'>You have to login to use it</small>
+        <label className='mb-2'>Welcome to Wordy</label>
+        <small className='mb-8'>You have to login to use it</small>
         <Form onSubmit={onFormSubmit}>
           <Input
-            className='mb-1' id='email' type='email'
+            className='mb-2' id='email' type='email'
             label='E-mail' required={inputRequired}
             onChange={onEmailChange}
             autoFocus={true} />
           <Input
-            className='mb-3' id='password' type='password'
+            className='mb-4' id='password' type='password'
             label='Password' required={inputRequired}
             onChange={onPasswordChange} />
           <Button
             primary='true' type='submit'
             disabled={showSpinner} spinner={showSpinner}
             onClick={onLoginClicked}>Login</Button>
+          {errorMessage && errorMessage.length > 0
+            ? <small className='text-center mt-2 text-red-400'>{errorMessage}</small>
+            : null}
         </Form>
-        {errorMessage && errorMessage.length > 0
-          ? <small className='mt-2 text-red-400'>{errorMessage}</small>
-          : null}
       </div>
     </>
   )

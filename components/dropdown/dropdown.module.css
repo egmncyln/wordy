@@ -1,0 +1,31 @@
+.dropdown {
+  @apply
+  transition-all
+  flex
+  items-center
+  border
+  border-gray-400
+  p-2
+  rounded
+  w-full
+  hover:border-gray-700
+}
+
+.label {
+  @apply
+  flex
+  justify-center
+  h-6
+  flex-grow
+}
+
+.chevron {
+  @apply
+  transition-all
+  h-6
+  w-6
+}
+
+.dropdown[opened=true] .chevron {
+  transform: rotate(180deg);
+}

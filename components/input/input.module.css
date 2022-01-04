@@ -1,5 +1,6 @@
 .input {
     @apply
+    transition-all
     flex
     flex-col
     justify-center
@@ -9,6 +10,7 @@
 
 .inputEl {
     @apply
+    transition-all
     px-2 py-2
     border
     border-gray-400
@@ -17,4 +19,5 @@
     outline-none
     shadow-sm
     shadow-gray-200
+    hover:border-gray-700
 }

@@ -1,6 +1,9 @@
 .form {
+    box-shadow: 1px 1px 0.5rem 1px rgb(156 163 175);
     @apply
     flex
     flex-col
     w-full
+    p-8
+    rounded
 }
