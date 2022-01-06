@@ -19,17 +19,14 @@ function Dropdown({ datas, ...props }: any) {
   const onSearch = (search: string) => {
     if (!dataNodes) {
       dataNodes = document.querySelectorAll('.dropdown-container .datas .data');
-    }
-    if (search.length >= 3) {
-      if (dataNodes) {
+    } else {
+      if (search.length >= 3) {
         for (let i = 0; i < dataNodes.length; i++) {
           if (dataNodes[i].innerText && !dataNodes[i].innerText.includes(search))
             dataNodes[i].style.display = 'none';
         }
       }
-    }
-    else {
-      if (dataNodes) {
+      else {
         for (let i = 0; i < dataNodes.length; i++)
           dataNodes[i].style.display = 'flex';
       }
