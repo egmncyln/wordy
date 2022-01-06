@@ -3,7 +3,7 @@ import styles from './input.module.css'
 import cn from 'classnames'
 
 
-function Input({ className, id, label, ...props }: any) {
+function Input({ className, id, label, placeholder, ...props }: any) {
     // 'invalid:placeholder:text-red-400',
     let lowerLabel = 'input';
     if (label) {
@@ -15,11 +15,11 @@ function Input({ className, id, label, ...props }: any) {
             <label htmlFor={id}>{label}</label>
             <input
                 {...props}
-                id={id} placeholder={`Enter ${lowerLabel}`}
+                id={id} placeholder={placeholder ? placeholder : `Enter ${lowerLabel}`}
                 className={cn('peer', styles.inputEl, 'invalid:border-red-400')}
-                onPaste={(e: any) => props.onChange(e.target.value)}
-                onChange={(e: any) => props.onChange(e.target.value)}
-                onFocus={(e: any) => props.onChange(e.target.value)} />
+                onChange={(e) => props.onChange(e.target.value)}
+                onDragEnter={(e) => e.preventDefault()}
+            />
             <small className={cn('hidden', 'peer-invalid:flex text-red-400')}>{`Please enter valid ${lowerLabel}`}</small>
         </div>
     )

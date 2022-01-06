@@ -29,12 +29,6 @@
     focus:bg-blue-700
 }
 
-.button[disabled] {
-    @apply
-    opacity-50
-    pointer-events-none
-}
-
 .svg {
     @apply
     transition-all

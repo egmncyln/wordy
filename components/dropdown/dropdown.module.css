@@ -29,3 +29,36 @@
 .dropdown[opened=true] .chevron {
   transform: rotate(180deg);
 }
+
+.search {
+  @apply
+  hidden
+  absolute
+  w-full
+  top-10
+  left-0 
+  pt-4
+  pb-4
+  pr-8
+  pl-8
+  bg-white
+  border
+  border-gray-400
+  transition-all
+}
+
+.dropdown[opened=true] + .search {
+  @apply
+  flex
+  flex-col
+}
+
+.dropdown:hover + .search {
+  @apply
+  border-gray-700
+}
+
+.input {
+@apply
+mb-2
+}

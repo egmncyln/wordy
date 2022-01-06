@@ -12,8 +12,14 @@
     font-medium
 }
 
-label, small {
+label, small, li {
     @apply
     transition-all
     drop-shadow-sm
+}
+
+*[disabled] {
+    @apply
+    opacity-50
+    pointer-events-none
 }

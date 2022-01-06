@@ -22,7 +22,7 @@ const Wordy: NextPage = () => {
                 <label className='mb-2'>{`Hi, ${userName} :)`}</label>
                 <small className='mb-8'>You can practice your favorite language with Wordy</small>
                 <Form>
-                    <Dropdown label='Word Lists' datas={[{ key: 'v', value: 'verbs' }]} />
+                    <Dropdown label='Word Lists' datas={[{ key: 'v', value: 'verbs' }, { key: 'n', value: 'nouns' }]} />
                 </Form>
 
             </div>

@@ -73,12 +73,12 @@ const Home: NextPage = () => {
         <small className='mb-8'>You have to login to use it</small>
         <Form onSubmit={onFormSubmit}>
           <Input
-            className='mb-2' id='email' type='email'
+            className='mb-2' type='email'
             label='E-mail' required={inputRequired}
             onChange={onEmailChange}
             autoFocus={true} />
           <Input
-            className='mb-4' id='password' type='password'
+            className='mb-4' type='password'
             label='Password' required={inputRequired}
             onChange={onPasswordChange} />
           <Button
