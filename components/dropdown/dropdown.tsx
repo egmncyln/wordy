@@ -8,28 +8,31 @@ import Input from '../input/input'
 export const OPTION_DEFAULT_VALUE = 'OPTION_DEFAULT_VALUE'
 
 function Dropdown({ datas, ...props }: any) {
-  const dataNodes: any[] = [];
+  let dataNodes: any;
   const [disabled, setDisabled] = useState(false);
   const [opened, setOpened] = useState(false);
-
-  useEffect(() => {
-    const nodeListOfElements = document.querySelectorAll('.dropdown-container .datas .data');
-    if (dataNodes.length <= 0 && nodeListOfElements && nodeListOfElements.length > 0) {
-      nodeListOfElements.forEach(node => dataNodes.push(node));
-      console.log(dataNodes);
-    }
-  }, [datas])
 
   if (!datas || datas.length <= 0) {
     setDisabled(true);
   }
 
   const onSearch = (search: string) => {
-    if (search.length >= 3 && dataNodes) {
-      dataNodes.forEach(node => {
-        if (!node.innerText.includes(search))
-          node.style.display = 'none';
-      })
+    if (!dataNodes) {
+      dataNodes = document.querySelectorAll('.dropdown-container .datas .data');
+    }
+    if (search.length >= 3) {
+      if (dataNodes) {
+        for (let i = 0; i < dataNodes.length; i++) {
+          if (dataNodes[i].innerText && !dataNodes[i].innerText.includes(search))
+            dataNodes[i].style.display = 'none';
+        }
+      }
+    }
+    else {
+      if (dataNodes) {
+        for (let i = 0; i < dataNodes.length; i++)
+          dataNodes[i].style.display = 'flex';
+      }
     }
   }
 
