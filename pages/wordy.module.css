@@ -6,3 +6,17 @@
     w-full
     max-w-sm
 }
+
+.icons {
+    @apply
+    w-full
+    flex
+    justify-end
+    items-center
+    mb-1
+}
+
+.icons > *:hover{
+    @apply
+    text-gray-400
+}

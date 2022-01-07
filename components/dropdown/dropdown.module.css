@@ -19,13 +19,6 @@
   flex-grow
 }
 
-.chevron {
-  @apply
-  transition-all
-  h-6
-  w-6
-}
-
 .dropdown[opened=true] .chevron {
   transform: rotate(180deg);
 }
