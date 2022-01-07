@@ -1,6 +1,6 @@
 .icon {
   @apply
   transition-all
-  h-6
-  w-6
+  h-4
+  w-4
 }
