@@ -5,7 +5,12 @@ import { FIREBASE_CONFIG } from './shared/constants';
 
 function MyApp({ Component, pageProps }: AppProps) {
   initializeApp(FIREBASE_CONFIG);
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+      <div id="overlay"></div>
+    </>
+  )
 }
 
 export default MyApp

@@ -12,10 +12,25 @@
     font-medium
 }
 
-label, small, li {
+#overlay {
+    @apply
+    hidden
+    fixed
+    w-screen
+    h-screen
+    bg-black
+    opacity-50
+    top-0
+    left-0
+    right-0
+    bottom-0
+}
+
+header, label, small {
     @apply
     transition-all
     drop-shadow-sm
+    p-0 m-0
 }
 
 *[disabled] {

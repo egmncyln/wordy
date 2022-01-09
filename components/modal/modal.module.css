@@ -1,0 +1,43 @@
+.container {
+  z-index: 2;
+  @apply
+  hidden
+  fixed
+}
+
+.container[opened=true] {
+  width: 24rem;
+  @apply
+  flex
+  flex-col
+  bg-white
+  border
+border-gray-400
+  rounded
+  p-8
+}
+
+.header {
+  @apply
+  mb-2
+  flex
+  justify-center
+}
+
+.main {
+  @apply
+  flex
+  mb-4
+}
+
+.footer {
+  @apply
+  flex
+  justify-end
+  items-center
+}
+
+.footer button:last-child {
+  @apply
+  ml-1
+}

@@ -74,8 +74,6 @@ function Dropdown({ datas, type, ...props }: any) {
     setOpened(!opened);
   }
 
-  // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
-
   return (
     <div ref={dropdownRef} className={styles.container} disabled={disabled}>
       <div {...props} className={styles.dropdown} opened={opened.toString()} onClick={() => setOpened(!opened)}>
