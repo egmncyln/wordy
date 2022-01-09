@@ -7,7 +7,7 @@ function Form({ className, children, ...props }: any) {
         <form
             {...props}
             className={cn('group', styles.form, className)}
-            action={null} onSubmit={(e) => props.onSubmit(e)}
+            action={null} onSubmit={(e) => { e.preventDefault(); props.onSubmit(e) }}
         >
             {children}
         </form>

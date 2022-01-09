@@ -26,7 +26,7 @@
     bg-red-600
     shadow-red-200
     hover:bg-red-700
-    focus:bg-blue-700
+    focus:bg-red-700
 }
 
 .svg {

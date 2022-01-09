@@ -39,5 +39,21 @@ border-gray-400
 
 .footer button:last-child {
   @apply
-  ml-1
+  ml-4
+}
+
+.form {
+  @apply
+  shadow-none
+  rounded-none
+  p-0
+}
+
+.close {
+  z-index: 3;
+  @apply
+  absolute
+  -top-2
+  -right-1
+hover:text-gray-400
 }

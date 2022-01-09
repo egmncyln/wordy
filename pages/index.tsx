@@ -18,7 +18,6 @@ const Home: NextPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const onFormSubmit = async (e: any) => {
-    e.preventDefault();
     setShowSpinner(true);
     setErrorMessage('');
     const auth = getAuth();

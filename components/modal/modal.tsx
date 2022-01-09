@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Types } from '../../enums/types.enum';
+import Close from '../../icons/close';
 import Button from '../button/button';
+import Form from '../form/form';
 import Input from '../input/input';
 import styles from './modal.module.css'
 
@@ -60,21 +62,22 @@ function Modal({ data, type, show, ...props }: any) {
     return jsx;
   }
 
-  const onSaveClicked = () => {
-    setInputRequiredToTrue();
+  const onFormSubmit = () => {
+    console.log('on submit');
   }
 
   return (
     <div {...props} className={styles.container} opened={opened.toString()}>
       <div className='relative'>
-        <header className={styles.header}>{getModalHeader()}</header>
-        <form>
+        <Close className={styles.close} onClick={(e: any) => props.onCloseClicked(e)} />
+        <Form className={styles.form} onSubmit={onFormSubmit}>
+          <header className={styles.header}>{getModalHeader()}</header>
           <main className={styles.main}>{getModalMain()}</main>
           <footer className={styles.footer}>
             <Button secondary="true" type="reset" onClick={(e: any) => props.onCloseClicked(e)}>Close</Button>
-            <Button primary="true" type="button" onClick={onSaveClicked}>Save</Button>
+            <Button primary="true" type="submit" onClick={setInputRequiredToTrue}>Save</Button>
           </footer>
-        </form>
+        </Form>
       </div>
     </div>
   )

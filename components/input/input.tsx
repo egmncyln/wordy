@@ -2,9 +2,7 @@ import React from 'react'
 import styles from './input.module.css'
 import cn from 'classnames'
 
-
 function Input({ className, id, label, placeholder, ...props }: any) {
-    // 'invalid:placeholder:text-red-400',
     let lowerLabel = 'input';
     if (label) {
         lowerLabel = (label as string).toLowerCase();

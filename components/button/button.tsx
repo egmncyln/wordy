@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './button.module.css'
-import cn from 'classnames'
 
 function Button({ spinner, children, ...props }: any) {
     let svgProps: any = {}
@@ -10,7 +9,7 @@ function Button({ spinner, children, ...props }: any) {
     return (
         <button
             {...props}
-            className={cn(styles.button, 'group-invalid:opacity-50', 'group-invalid:pointer-events-none')}
+            className={styles.button}
             onClick={(e) => props.onClick(e)}
         >
             <svg {...svgProps} className={styles.svg} xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
