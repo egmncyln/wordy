@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Chevron from '../../icons/chevron'
 import { KeyValue } from '../../models/key-value.model'
 import styles from './dropdown.module.css'
@@ -8,10 +8,27 @@ import { Types } from '../../enums/types.enum'
 export const OPTION_DEFAULT_VALUE = 'OPTION_DEFAULT_VALUE'
 
 function Dropdown({ datas, type, ...props }: any) {
+  let dropdownRef = useRef(null);
   let dataNodes: any;
   const [disabled, setDisabled] = useState(false);
   const [opened, setOpened] = useState(false);
   const [label, setLabel] = useState('');
+
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      const dropdownCurrent: any = (dropdownRef && dropdownRef.current) ? dropdownRef.current : null;
+      // if user clicks outside this component
+      if (dropdownCurrent && !dropdownCurrent.contains(event.target)) {
+        setOpened(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef])
 
   useEffect(() => {
     if (!datas || datas.length <= 0) {
@@ -60,7 +77,7 @@ function Dropdown({ datas, type, ...props }: any) {
   // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
 
   return (
-    <div className={styles.container} disabled={disabled}>
+    <div ref={dropdownRef} className={styles.container} disabled={disabled}>
       <div {...props} className={styles.dropdown} opened={opened.toString()} onClick={() => setOpened(!opened)}>
         <label className={styles.label}>{label}</label>
         <Chevron className={styles.chevron} />
