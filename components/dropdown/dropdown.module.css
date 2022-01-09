@@ -1,3 +1,8 @@
+.container {
+  @apply
+  relative
+}
+
 .dropdown {
   @apply
   transition-all
@@ -52,6 +57,20 @@
 }
 
 .input {
-@apply
-mb-2
+  @apply
+  mb-2
+}
+
+.datas {}
+
+:not(.data[display=none]) + .data {
+  @apply
+  ml-2
+}
+
+.data:hover {
+  @apply
+  cursor-pointer
+  transition-all
+  text-gray-400
 }

@@ -1,6 +1,7 @@
 .icon {
   @apply
+  cursor-pointer
   transition-all
-  h-4
-  w-4
+  h-5
+  w-5
 }

@@ -15,6 +15,19 @@ const Wordy: NextPage = () => {
     const router = useRouter();
     const { userId, userName } = router.query;
     //[{key: 'v', value: 'verbs' }, {key: 'n', value: 'nouns' }]
+
+    const onAddClicked = () => {
+
+    }
+
+    const onEditClicked = () => {
+
+    }
+
+    const onDeleteClicked = () => {
+
+    }
+
     return (
         <>
             <Head>
@@ -27,7 +40,7 @@ const Wordy: NextPage = () => {
                 <small className='mb-8'>You can practice english with Wordy</small>
                 <Form>
                     <div className={styles.icons}>
-                        <Add /><Edit /><Delete />
+                        <Add onClick={onAddClicked} /><Edit onClick={onEditClicked} /><Delete onClick={onDeleteClicked} />
                     </div>
                     <Dropdown datas={[{ key: 'v', value: 'verbs' }, { key: 'n', value: 'nouns' }]} type={Types.List} />
                 </Form>

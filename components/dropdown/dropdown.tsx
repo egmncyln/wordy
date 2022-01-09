@@ -33,30 +33,45 @@ function Dropdown({ datas, type, ...props }: any) {
 
   const onSearch = (search: string) => {
     if (!dataNodes) {
-      dataNodes = document.querySelectorAll('.dropdown-container .datas .data');
+      dataNodes = document.querySelectorAll(`.${styles.container} .${styles.datas} .${styles.data}`);
     } else {
       if (search.length >= 3) {
         for (let i = 0; i < dataNodes.length; i++) {
-          if (dataNodes[i].innerText && !dataNodes[i].innerText.includes(search))
+          if (dataNodes[i].innerText && !dataNodes[i].innerText.includes(search)) {
             dataNodes[i].style.display = 'none';
+            dataNodes[i].setAttribute('display', 'none');
+          }
         }
       }
       else {
-        for (let i = 0; i < dataNodes.length; i++)
-          dataNodes[i].style.display = 'flex';
+        for (let i = 0; i < dataNodes.length; i++) {
+          dataNodes[i].style.display = 'inline';
+          dataNodes[i].removeAttribute('display');
+        }
       }
     }
   }
 
+  const onItemSelected = (key: string) => {
+    console.log(key);
+    setOpened(!opened);
+  }
+
+  // https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
+
   return (
-    <div className='dropdown-container relative' disabled={disabled}>
+    <div className={styles.container} disabled={disabled}>
       <div {...props} className={styles.dropdown} opened={opened.toString()} onClick={() => setOpened(!opened)}>
         <label className={styles.label}>{label}</label>
         <Chevron className={styles.chevron} />
       </div>
       <div className={styles.search}>
         <Input className={styles.input} type='text' placeholder='Type min 3 chars to search' onChange={onSearch} />
-        <ul className='datas'>{datas.map((data: KeyValue) => <li className='data' key={data.key} value={data.key}>{data.value}</li>)}</ul>
+        <div className={styles.datas}>
+          {datas.map((data: KeyValue) =>
+            <label className={styles.data} key={data.key} onClick={() => onItemSelected(data.key)}>{data.value}</label>
+          )}
+        </div>
       </div>
     </div>
   )

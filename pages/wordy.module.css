@@ -18,5 +18,6 @@
 
 .icons > *:hover{
     @apply
+    transition-all
     text-gray-400
 }
