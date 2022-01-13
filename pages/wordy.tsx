@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './wordy.module.css'
@@ -19,6 +18,19 @@ const Wordy: NextPage = () => {
     const [modalType, setModalType] = useState(Types.List);
     //[{key: 'v', value: 'verbs' }, {key: 'n', value: 'nouns' }]
 
+    useEffect(() => {
+        router.beforePopState(({ url, as }) => {
+            if (as === url) {
+                return false;
+            }
+            return true;
+        })
+    }, []);
+
+    useEffect(() => {
+
+    }, [userId])
+
     const onEditClicked = () => {
 
     }
@@ -29,11 +41,6 @@ const Wordy: NextPage = () => {
 
     return (
         <>
-            <Head>
-                <title>Wordy App</title>
-                <link rel='icon' href='/favicon.ico' />
-            </Head>
-
             <div className={styles.wordy}>
                 <label className='mb-2'>{`Hi, ${userName} :)`}</label>
                 <small className='mb-8'>You can practice english with Wordy</small>
@@ -46,7 +53,6 @@ const Wordy: NextPage = () => {
             </div>
             <Modal type={modalType} show={showModal} onCloseClicked={() => setShowModal(false)} />
         </>
-
     )
 }
 

@@ -17,15 +17,13 @@ function Dropdown({ datas, type, ...props }: any) {
   useEffect(() => {
     function handleClickOutside(event: any) {
       const dropdownCurrent: any = (dropdownRef && dropdownRef.current) ? dropdownRef.current : null;
-      // if user clicks outside this component
+      // if user clicks anywhere outside this component
       if (dropdownCurrent && !dropdownCurrent.contains(event.target)) {
         setOpened(false);
       }
     }
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef])

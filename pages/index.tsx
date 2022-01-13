@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Button from '../components/button/button'
@@ -60,36 +59,28 @@ const Home: NextPage = () => {
   }
 
   return (
-    <>
-      <Head>
-        <title>Wordy App</title>
-        <link rel='icon' href='/favicon.ico' />
-        {/* <script src='scripts/attach-voice.js'></script> */}
-      </Head>
-
-      <div className={styles.index}>
-        <label className='mb-2'>Welcome to Wordy</label>
-        <small className='mb-8'>You have to login to use it</small>
-        <Form onSubmit={onFormSubmit}>
-          <Input
-            className='mb-2' type='email'
-            label='E-mail' required={inputRequired}
-            onChange={onEmailChange}
-            autoFocus={true} />
-          <Input
-            className='mb-4' type='password'
-            label='Password' required={inputRequired}
-            onChange={onPasswordChange} />
-          <Button
-            primary='true' type='submit'
-            disabled={showSpinner} spinner={showSpinner}
-            onClick={onLoginClicked}>Login</Button>
-          {errorMessage && errorMessage.length > 0
-            ? <small className='text-center mt-2 text-red-400'>{errorMessage}</small>
-            : null}
-        </Form>
-      </div>
-    </>
+    <div className={styles.index}>
+      <label className='mb-2'>Welcome to Wordy</label>
+      <small className='mb-8'>You have to login to use it</small>
+      <Form onSubmit={onFormSubmit}>
+        <Input
+          className='mb-2' type='email'
+          label='E-mail' required={inputRequired}
+          onChange={onEmailChange}
+          autoFocus={true} />
+        <Input
+          className='mb-4' type='password'
+          label='Password' required={inputRequired}
+          onChange={onPasswordChange} />
+        <Button
+          primary='true' type='submit'
+          disabled={showSpinner} spinner={showSpinner}
+          onClick={onLoginClicked}>Login</Button>
+        {errorMessage && errorMessage.length > 0
+          ? <small className='text-center mt-2 text-red-400'>{errorMessage}</small>
+          : null}
+      </Form>
+    </div>
   )
 }
 
