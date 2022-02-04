@@ -30,7 +30,7 @@ function Dropdown({ datas, type, ...props }: any) {
 
   useEffect(() => {
     if (!datas || datas.length <= 0) {
-      setDisabled(true);
+      //setDisabled(true);
     }
     if (type === Types.List) {
       if (disabled)
@@ -44,7 +44,7 @@ function Dropdown({ datas, type, ...props }: any) {
       else
         setLabel('Please select a word from dropdown');
     }
-  }, [datas, type, disabled]);
+  }, [datas, type]);
 
   const onSearch = (search: string) => {
     if (!dataNodes) {

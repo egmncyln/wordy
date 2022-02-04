@@ -1,4 +1,5 @@
 export enum Types {
-  List = 0,
-  Word = 1
+  None = 0,
+  List = 1,
+  Word = 2
 }

@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { databaseURL } from '../../constants';
 import { Types } from '../../enums/types.enum';
 import Close from '../../icons/close';
 import Button from '../button/button';
@@ -6,12 +8,20 @@ import Form from '../form/form';
 import Input from '../input/input';
 import styles from './modal.module.css'
 
-function Modal({ data, type, show, ...props }: any) {
+function Modal({ datas, show, ...props }: any) {
   let overlay: any;
+  const { userId, type, data } = datas;
   const [opened, setOpened] = useState(false);
   const [inputRequired, setInputRequired] = useState(false);
 
-  useEffect(() => show ? openModal() : closeModal(), [show])
+  useEffect(() => {
+    if (!datas || !datas.userId || !datas.type)
+      setOpened(false);
+  }, [datas, datas.userId, datas.type])
+
+  useEffect(() => {
+    show ? openModal() : closeModal()
+  }, [show])
 
   const setInputRequiredToTrue = () => inputRequired ? null : setInputRequired(true);
 
@@ -50,7 +60,6 @@ function Modal({ data, type, show, ...props }: any) {
         jsx = <Input type='text' label='List Name' required={inputRequired} onChange={(e: any) => console.log(e)} />
       }
     }
-
     else if (type === Types.Word) {
       if (data) {
 
@@ -63,7 +72,22 @@ function Modal({ data, type, show, ...props }: any) {
   }
 
   const onFormSubmit = () => {
-    console.log('on submit');
+    if (type === Types.List) {
+      if (data) {
+
+      }
+      else {
+        // axios.post(databaseURL, { userId: userId, listName: })
+      }
+    }
+    else if (type === Types.Word) {
+      if (data) {
+
+      }
+      else {
+
+      }
+    }
   }
 
   return (

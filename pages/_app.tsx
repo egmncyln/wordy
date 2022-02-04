@@ -1,7 +1,7 @@
 import '../styles/main.css'
 import type { AppProps } from 'next/app'
 import { initializeApp } from 'firebase/app';
-import { FIREBASE_CONFIG } from './shared/constants';
+import { FIREBASE_CONFIG } from '../constants';
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
